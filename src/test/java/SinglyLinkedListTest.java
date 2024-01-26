@@ -6,7 +6,7 @@ class SinglyLinkedListTest<T> {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        
+
         sll1 = new SinglyLinkedList(1);
 
     }
@@ -231,8 +231,10 @@ class SinglyLinkedListTest<T> {
         String backward = "10 -> 9 -> 8 -> 7 -> 6 -> 5 -> 4 -> 3 -> 2 -> 1 -> null";
 
         assertEquals(forward, sll1.toString());
-        sll1.reverse();
-        assertEquals(backward, sll1.toString());
+        //modified test so that reverse() creates a new instance of LinkedList with the reversed nodes
+        //instead of updating the original instance of LinkedList sll1
+        SinglyLinkedList sll2 = sll1.reverse();
+        assertEquals(backward, sll2.toString());
 
     }
 
