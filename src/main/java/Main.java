@@ -45,5 +45,17 @@ public class Main {
 
         System.out.println("Does list contain value 15? " + sll1.contains(15));
         System.out.println("Does list contain value 2? " + sll1.contains(2));
+
+        sll1.setNodeAt(0,4);
+        System.out.println(sll1.toString());
+        //correct answer: 4 -> 20 -> 24 -> 35 -> null
+
+        sll1.addFirst(3);
+        System.out.println(sll1.toString());
+        //correct answer: 3 -> 4 -> 20 -> 24 -> 35 -> null
+
+        sll1.reverseOriginal();
+        System.out.println(sll1.toString());
+        //correct answer: 35 -> 24 -> 20 -> 4 -> 3 -> null
     }
 }

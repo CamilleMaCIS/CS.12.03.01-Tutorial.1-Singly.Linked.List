@@ -267,7 +267,6 @@ public class SinglyLinkedList<T> {
     // Returns the data held in the node at a specified index.
     // Throws an illegal argument exception if the index is invalid.
     public T valueAt(int index) {
-
         if (index < 0 || index > size() - 1){
             throw new IllegalArgumentException("Index is invalid");
         }
@@ -279,11 +278,11 @@ public class SinglyLinkedList<T> {
             i++;
         }
         return (T) temp.data;
-
     }
 
+
     // reverse
-    // Reverses the Singly Linked List.
+    // Reverses the Singly Linked List and returns the reversed one
     public SinglyLinkedList reverse() {
         //the head of the current LinkedList will be the tail for the new linked list
         SinglyLinkedList reversed = new SinglyLinkedList(head.data);
@@ -306,6 +305,39 @@ public class SinglyLinkedList<T> {
         //which means it will take longer for the program to find the size - n node, and then swap
         //everytime it searches for the node at Nth index, program will have to run through the LinkedList again
         //this will take N^2 time
+    }
+
+    public void reverseOriginal(){
+        if(this.size > 1){
+            int stop = this.size/2;
+            int i = 0;
+            while (i < stop){
+                T tempData = valueAt(i);
+                setNodeAt(i, valueAt(this.size - 1 - i));
+                setNodeAt(this.size - 1 - i, tempData);
+                i++;
+            }
+        }
+
+    }
+
+
+    //setNodeAt
+    //this is a helper method for reverseOriginal()
+    //same as valueAt, but instead of accessing the data of some node at index, this will modify the data of some node at index
+    public void setNodeAt(int index, T data){
+        if (index < 0 || index > size() - 1){
+            throw new IllegalArgumentException("Index is invalid");
+        }
+
+        int i = 0;
+        Node temp = head;
+        while (i < index){
+            temp = temp.next;
+            i++;
+        }
+        //setting the data of node to the new data passed
+        temp.data = data;
     }
 
     // toString
